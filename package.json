@@ -1,8 +1,8 @@
 {
-    "name": "awesome-vscode-extension-boilerplate",
-    "displayName": "Awesome VSCode Extension Boilerplate",
+    "name": "vue-helper",
+    "displayName": "Vue Helper",
     "version": "0.0.1",
-    "description": "An awesome vscode extension boilerplate",
+    "description": "provide some useful tools for vue project",
     "publisher": "YuTengjing",
     "preview": true,
     "author": {
@@ -11,13 +11,13 @@
         "email": "ytj2713151713@gmail.com"
     },
     "license": "SEE LICENSE IN LICENSE",
-    "homepage": "https://github.com/tjx666/awesome-vscode-extension-boilerplate/blob/master/README.md",
+    "homepage": "https://github.com/tjx666/vue-helper/blob/master/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/tjx666/awesome-vscode-extension-boilerplate"
+        "url": "https://github.com/tjx666/vue-helper"
     },
     "bugs": {
-        "url": "https://github.com/tjx666/awesome-vscode-extension-boilerplate/issues",
+        "url": "https://github.com/tjx666/vue-helper/issues",
         "email": "ytj2713151713@gmail.com"
     },
     "categories": [
@@ -32,19 +32,23 @@
         {
             "url": "https://img.shields.io/badge/PRs-welcome-brightgreen.svg",
             "description": "PRs Welcome",
-            "href": "https://github.com/tjx666/awesome-vscode-extension-boilerplate"
+            "href": "https://github.com/tjx666/vue-helper"
         }
     ],
     "activationEvents": [
-        "onCommand:awesome-vscode-extension-boilerplate.helloWorld"
+        "onLanguage:vue"
     ],
     "contributes": {
-        "commands": [
-            {
-                "command": "awesome-vscode-extension-boilerplate.helloWorld",
-                "title": "Hello World"
+        "configuration": {
+            "title": "Vue Helper",
+            "properties": {
+                "vueHelper.moduleDefinition.enable": {
+                    "title": "enable js module definition in vue file",
+                    "type": "boolean",
+                    "default": false
+                }
             }
-        ]
+        }
     },
     "eslintConfig": {
         "extends": "@yutengjing/eslint-config-typescript"
