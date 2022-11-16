@@ -1,6 +1,6 @@
-# Vue Helper
+# Neo Vue Helper
 
-![test](https://github.com/tjx666/vue-helper/actions/workflows/test.yml/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Known Vulnerabilities](https://snyk.io/test/github/tjx666/vue-helper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/tjx666/vue-helper?targetFile=package.json) [![Percentage of issues still open](https://isitmaintained.com/badge/open/tjx666/vue-helper.svg)](http://isitmaintained.com/project/tjx666/vue-helper') [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+![test](https://github.com/tjx666/neo-vue-helper/actions/workflows/test.yml/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Known Vulnerabilities](https://snyk.io/test/github/tjx666/neo-vue-helper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/tjx666/neo-vue-helper?targetFile=package.json) [![Percentage of issues still open](https://isitmaintained.com/badge/open/tjx666/neo-vue-helper.svg)](http://isitmaintained.com/project/tjx666/neo-vue-helper') [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 ## Features
 
@@ -18,13 +18,13 @@ import Comp from './comp';
 
 This extension also fix the vetur another issue: In monorepo project, you can't use `Go to Definition` for a package which is installed in root but not current workspace.
 
-![Go to Definition](https://github.com/tjx666/vue-helper/blob/master/assets/screenshots/go_to_definition.gif?raw=true)
+![Go to Definition](https://github.com/tjx666/neo-vue-helper/blob/main/assets/screenshots/go_to_definition.gif?raw=true)
 
 By default, this feature is disabled, you need manually enable it:
 
 ```json
 {
-  "vueHelper.moduleDefinition.enable": true
+  "neoVueHelper.moduleDefinition.enable": true
 }
 ```
 

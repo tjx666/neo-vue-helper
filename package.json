@@ -1,6 +1,6 @@
 {
-    "name": "vue-helper",
-    "displayName": "Vue Helper",
+    "name": "neo-vue-helper",
+    "displayName": "Neo Vue Helper",
     "version": "0.0.1",
     "description": "provide some useful tools for vue project",
     "publisher": "YuTengjing",
@@ -11,13 +11,13 @@
         "email": "ytj2713151713@gmail.com"
     },
     "license": "SEE LICENSE IN LICENSE",
-    "homepage": "https://github.com/tjx666/vue-helper/blob/master/README.md",
+    "homepage": "https://github.com/tjx666/neo-vue-helper/blob/master/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/tjx666/vue-helper"
+        "url": "https://github.com/tjx666/neo-vue-helper"
     },
     "bugs": {
-        "url": "https://github.com/tjx666/vue-helper/issues",
+        "url": "https://github.com/tjx666/neo-vue-helper/issues",
         "email": "ytj2713151713@gmail.com"
     },
     "keywords": [
@@ -38,7 +38,7 @@
         {
             "url": "https://img.shields.io/badge/PRs-welcome-brightgreen.svg",
             "description": "PRs Welcome",
-            "href": "https://github.com/tjx666/vue-helper"
+            "href": "https://github.com/tjx666/neo-vue-helper"
         }
     ],
     "activationEvents": [
@@ -46,9 +46,9 @@
     ],
     "contributes": {
         "configuration": {
-            "title": "Vue Helper",
+            "title": "Neo Vue Helper",
             "properties": {
-                "vueHelper.moduleDefinition.enable": {
+                "neoVueHelper.moduleDefinition.enable": {
                     "title": "enable js module definition in vue file(need reload vscode)",
                     "type": "boolean",
                     "default": false

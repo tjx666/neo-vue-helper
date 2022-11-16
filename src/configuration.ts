@@ -12,6 +12,8 @@ export const configuration: Configuration = {
 updateConfiguration();
 
 export function updateConfiguration() {
-    const moduleDefinitionConfig = vscode.workspace.getConfiguration('vueHelper.moduleDefinition');
+    const moduleDefinitionConfig = vscode.workspace.getConfiguration(
+        'neoVueHelper.moduleDefinition',
+    );
     configuration.moduleDefinition.enable = moduleDefinitionConfig.get('enable')!;
 }
