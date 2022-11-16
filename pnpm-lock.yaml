@@ -4,6 +4,7 @@ specifiers:
   '@types/glob': ^8.0.0
   '@types/mocha': ^10.0.0
   '@types/node': 16.18.3
+  '@types/resolve': ^1.20.2
   '@types/vscode': ^1.73.1
   '@typescript-eslint/eslint-plugin': ^5.43.0
   '@typescript-eslint/parser': ^5.43.0
@@ -16,6 +17,7 @@ specifiers:
   glob: ^8.0.3
   mocha: ^10.1.0
   prettier: ^2.7.1
+  resolve: ^1.22.1
   rimraf: ^3.0.2
   typescript: ^4.8.4
   vsce: ^2.14.0
@@ -24,6 +26,7 @@ devDependencies:
   '@types/glob': 8.0.0
   '@types/mocha': 10.0.0
   '@types/node': 16.18.3
+  '@types/resolve': 1.20.2
   '@types/vscode': 1.73.1
   '@typescript-eslint/eslint-plugin': 5.43.0_yy4vf4gcvxiubmg7fqa55dqe2i
   '@typescript-eslint/parser': 5.43.0_rmayb2veg2btbq6mbmnyivgasy
@@ -36,6 +39,7 @@ devDependencies:
   glob: 8.0.3
   mocha: 10.1.0
   prettier: 2.7.1
+  resolve: 1.22.1
   rimraf: 3.0.2
   typescript: 4.8.4
   vsce: 2.14.0
@@ -219,6 +223,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/resolve/1.20.2:
+    resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
     dev: true
 
   /@types/semver/7.3.13:

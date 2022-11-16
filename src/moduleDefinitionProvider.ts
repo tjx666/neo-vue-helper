@@ -1,29 +1,27 @@
-import fs from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
-import type {
-    CancellationToken,
-    Definition,
-    DefinitionLink,
-    DefinitionProvider,
-    LocationLink,
-    TextDocument,
-} from 'vscode';
+import { dirname } from 'node:path';
+import type { AsyncOpts } from 'resolve';
+import _resolve from 'resolve';
+import type { CancellationToken, DefinitionLink, DefinitionProvider, TextDocument } from 'vscode';
 import { Position, Range, Uri } from 'vscode';
 
-import { isDirectory, pathExists } from './utils';
-
-const indexFileExts = ['js', 'jsx', 'ts', 'tsx'];
-const indexFileNames = new Set(indexFileExts.map((ext) => `index${ext}`));
+function resolveModule(modulePath: string, opts: AsyncOpts) {
+    return new Promise<string | void>((resolve) => {
+        _resolve(modulePath, opts, (err, moduleAbsPath) => {
+            if (err) {
+                resolve();
+                return;
+            }
+            resolve(moduleAbsPath);
+        });
+    });
+}
 
 export class ModuleDefinitionProvider implements DefinitionProvider {
     async provideDefinition(
         document: TextDocument,
         position: Position,
         _token: CancellationToken,
-    ): Promise<Definition | LocationLink[] | undefined> {
-        const { fileName } = document;
-        const directory = dirname(fileName);
-
+    ): Promise<DefinitionLink[] | undefined> {
         const line = document.lineAt(position);
         const lineText = line.text;
         const importStatementRegexp = /^\s*import\s+(.*?)?["'](.*?)["']/;
@@ -31,7 +29,7 @@ export class ModuleDefinitionProvider implements DefinitionProvider {
         const modulePath = matchArray?.[2];
         if (modulePath === undefined) return;
 
-        const createDefinition = (vueFile: string) => {
+        const createDefinition = async (targetFile: string) => {
             const modulePathIndex = lineText.indexOf(modulePath);
             const startPosition = new Position(line.range.start.line, modulePathIndex);
             const endPosition = new Position(
@@ -40,39 +38,34 @@ export class ModuleDefinitionProvider implements DefinitionProvider {
             );
             const definitionLink: DefinitionLink = {
                 originSelectionRange: new Range(startPosition, endPosition),
-                targetUri: Uri.file(vueFile),
+                targetUri: Uri.file(targetFile),
                 targetRange: new Range(new Position(0, 0), new Position(0, 0)),
             };
             return [definitionLink];
         };
 
-        const isRelativePath = modulePath.startsWith('.');
-        if (isRelativePath) {
-            const absPath = resolve(directory, modulePath);
-            const isPathExists = await pathExists(absPath);
-            if (
-                isPathExists &&
-                (await isDirectory(absPath)) &&
-                (await fs.readdir(absPath)).every((filename) => !indexFileNames.has(filename))
-            ) {
-                const vueIndex = resolve(absPath, 'index.vue');
-                if (await pathExists(vueIndex)) {
-                    return createDefinition(vueIndex);
-                }
-            } else if (
-                !isPathExists &&
-                (
-                    await Promise.all(
-                        indexFileExts.map(async (ext) => {
-                            return !(await pathExists(`${absPath}.${ext}`));
-                        }),
-                    )
-                ).every(Boolean)
-            ) {
-                const vueIndex = `${absPath}.vue`;
-                if (await pathExists(vueIndex)) {
-                    return createDefinition(vueIndex);
-                }
+        const { fileName } = document;
+        const directory = dirname(fileName);
+        const baseOptions: AsyncOpts = {
+            basedir: directory,
+            extensions: ['.tsx', '.ts', '.jsx', '.js', '.vue'],
+        };
+        let moduleAbsPath = await resolveModule(modulePath, {
+            ...baseOptions,
+            // get real path
+            preserveSymlinks: false,
+        });
+        if (moduleAbsPath) {
+            const isWorkspaceDep = !moduleAbsPath.includes('node_modules');
+            if (!isWorkspaceDep) {
+                moduleAbsPath = await resolveModule(modulePath, {
+                    ...baseOptions,
+                    // use local deps, but not pnpm cache
+                    preserveSymlinks: true,
+                });
+            }
+            if (moduleAbsPath) {
+                return createDefinition(moduleAbsPath);
             }
         }
 
