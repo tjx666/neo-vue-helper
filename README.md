@@ -1,6 +1,6 @@
 # Neo Vue Helper
 
-![test](https://github.com/tjx666/neo-vue-helper/actions/workflows/test.yml/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Known Vulnerabilities](https://snyk.io/test/github/tjx666/neo-vue-helper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/tjx666/neo-vue-helper?targetFile=package.json) [![Percentage of issues still open](https://isitmaintained.com/badge/open/tjx666/neo-vue-helper.svg)](http://isitmaintained.com/project/tjx666/neo-vue-helper') [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+![test](https://github.com/tjx666/neo-vue-helper/actions/workflows/test.yml/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Known Vulnerabilities](https://snyk.io/test/github/tjx666/neo-vue-helper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/tjx666/neo-vue-helper?targetFile=package.json) [![Percentage of issues still open](https://isitmaintained.com/badge/open/tjx666/neo-vue-helper.svg)](http://isitmaintained.com/project/tjx666/neo-vue-helper) [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 ## Features
 
