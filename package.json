@@ -20,8 +20,14 @@
         "url": "https://github.com/tjx666/vue-helper/issues",
         "email": "ytj2713151713@gmail.com"
     },
+    "keywords": [
+        "vue",
+        "vue2",
+        "intellisense",
+        "definition"
+    ],
     "categories": [
-        "Other"
+        "Programming Languages"
     ],
     "main": "./out/extension.js",
     "icon": "assets/logo.png",
@@ -43,7 +49,7 @@
             "title": "Vue Helper",
             "properties": {
                 "vueHelper.moduleDefinition.enable": {
-                    "title": "enable js module definition in vue file",
+                    "title": "enable js module definition in vue file(need reload vscode)",
                     "type": "boolean",
                     "default": false
                 }

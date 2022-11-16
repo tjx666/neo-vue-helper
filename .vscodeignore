@@ -1,9 +1,12 @@
-.vscode/**
-.vscode-test/**
-src/**
+.vscode
+.vscode-test
+src
 assets/screenshots
+test-workspace
+pnpm-lock.yaml
+.github
 
-**/tsconfig.json
+**/tsconfig.*
 **/.eslintrc.json
 **/*.map
 **/*.ts

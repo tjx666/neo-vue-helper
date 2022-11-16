@@ -20,7 +20,7 @@ This extension also fix the vetur another issue: In monorepo project, you can't 
 
 ![Go to Definition](https://github.com/tjx666/vue-helper/blob/master/assets/screenshots/go_to_definition.gif?raw=true)
 
-By default, this feature is disable, you must manually enable it:
+By default, this feature is disabled, you need manually enable it:
 
 ```json
 {
