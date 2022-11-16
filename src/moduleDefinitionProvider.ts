@@ -1,3 +1,4 @@
+import fs from 'node:fs/promises';
 import { dirname } from 'node:path';
 import type { AsyncOpts } from 'resolve';
 import _resolve from 'resolve';
@@ -16,6 +17,19 @@ function resolveModule(modulePath: string, opts: AsyncOpts) {
     });
 }
 
+async function getFileRange(filePath: string) {
+    const textContent = await fs.readFile(filePath, 'utf8');
+    const lines = textContent.split(/\r?\n/);
+    const lastLine = lines.at(-1);
+    return new Range(
+        new Position(0, 0),
+        new Position(
+            Math.max(0, lines.length - 1),
+            lastLine === undefined ? 0 : Math.max(0, lastLine.length - 1),
+        ),
+    );
+}
+
 export class ModuleDefinitionProvider implements DefinitionProvider {
     async provideDefinition(
         document: TextDocument,
@@ -24,9 +38,9 @@ export class ModuleDefinitionProvider implements DefinitionProvider {
     ): Promise<DefinitionLink[] | undefined> {
         const line = document.lineAt(position);
         const lineText = line.text;
-        const importStatementRegexp = /^\s*import\s+(.*?)?["'](.*?)["']/;
+        const importStatementRegexp = /^\s*import\s+.*?["'](.*?)["']/;
         const matchArray = lineText.match(importStatementRegexp);
-        const modulePath = matchArray?.[2];
+        const modulePath = matchArray?.[1];
         if (modulePath === undefined) return;
 
         const createDefinition = async (targetFile: string) => {
@@ -39,7 +53,7 @@ export class ModuleDefinitionProvider implements DefinitionProvider {
             const definitionLink: DefinitionLink = {
                 originSelectionRange: new Range(startPosition, endPosition),
                 targetUri: Uri.file(targetFile),
-                targetRange: new Range(new Position(0, 0), new Position(0, 0)),
+                targetRange: await getFileRange(targetFile),
             };
             return [definitionLink];
         };
